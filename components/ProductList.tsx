@@ -1,29 +1,38 @@
-import CategorySelect from './CategorySelect';
-import PriceSelect from './PriceSelect';
-import SortBySelect from './SortBySelect';
-import ViewSelect from './ViewSelect';
+'use client';
+import { useEffect, useState } from 'react';
+import ProductFilter from './ProductFilter';
+import productApi from '@/api/product-api';
+import { useSearchParams } from 'next/navigation';
+import ProductCard from './ProductCard';
 
 const ProductList = () => {
+    const [products, setProducts] = useState([]);
+    const searchParams = useSearchParams();
+    const category = searchParams.get('category') ?? 'all';
+    useEffect(() => {
+        const fetchProduct = async () => {
+            let res;
+            if (category === 'all') {
+                res = await productApi.getAllProducts();
+            } else {
+                res = await productApi.getProductsByCategory(category);
+            }
+            if (res) {
+                setProducts(res.products ?? []);
+            }
+        };
+
+        fetchProduct();
+    }, [category]);
+
     return (
-        <div className="flex items-center justify-between">
-            <section className="flex gap-6">
-                <div className="min-w-[262px]">
-                    <p className="mb-2 font-semibold text-base leading-[26px] text-neutral-400">
-                        CATEGORIES
-                    </p>
-                    <CategorySelect />
-                </div>
-                <div className="min-w-[262px]">
-                    <p className="mb-2 font-semibold text-base leading-[26px] text-neutral-400">
-                        PRICE
-                    </p>
-                    <PriceSelect />
-                </div>
-            </section>
-            <section className="flex self-end">
-                <SortBySelect />
-                <ViewSelect />
-            </section>
+        <div>
+            <ProductFilter />
+            <div className="grid grid-cols-4 gap-8 mt-10">
+                {products.map((product: Product) => (
+                    <ProductCard product={product} key={product.id} />
+                ))}
+            </div>
         </div>
     );
 };

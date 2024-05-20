@@ -9,11 +9,12 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import useCreateQueryString from '@/hooks/useCreateQueryString';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const CategorySelect = () => {
     const [selected, setSelected] = useState<string | undefined>(undefined);
+    const searchParams = useSearchParams();
     const [categories, setCategories] = useState<string[]>([]);
     const router = useRouter();
     useEffect(() => {
@@ -35,8 +36,10 @@ const CategorySelect = () => {
         router.push(`/?${queryString}`);
     };
 
+    const currentCategory = searchParams.get('category') ?? '';
+
     return (
-        <Select onValueChange={handleSelect}>
+        <Select onValueChange={handleSelect} defaultValue={currentCategory}>
             <SelectTrigger>
                 <SelectValue placeholder="Select a category" />
             </SelectTrigger>
