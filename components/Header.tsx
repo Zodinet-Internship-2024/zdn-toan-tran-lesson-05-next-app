@@ -15,17 +15,13 @@ const Header = () => {
                     height={18}
                 />
                 <span className="">30% off storewide — Limited time!</span>
-                <p className="flex items-center">
+                <Link
+                    href="/shop"
+                    className="border-b border-blue-400 flex items-center text-blue-400"
+                >
                     <span>Shop now</span>
-                    <Button variant="ghost">
-                        <Image
-                            src="/icons/arrow-right.svg"
-                            alt="arow icon"
-                            width={18}
-                            height={18}
-                        />
-                    </Button>
-                </p>
+                    <Image src="/icons/arrow-right.svg" alt="arow icon" width={18} height={18} />
+                </Link>
                 <Button className="" variant="ghost">
                     <Image
                         src="/icons/close.svg"
@@ -36,8 +32,8 @@ const Header = () => {
                     />
                 </Button>
             </section>
-            <section className="max-w-[1140px] mx-auto flex justify-between py-4 items-center">
-                <h1 className="font-medium text-2xl leading-6">Shop.</h1>
+            <section className="max-w-[1140px] mx-auto flex justify-between py-4 items-center px-8">
+                <h2 className="font-medium text-2xl leading-6">Shop.</h2>
                 <Navbar />
                 <div>
                     <Button variant="ghost">
