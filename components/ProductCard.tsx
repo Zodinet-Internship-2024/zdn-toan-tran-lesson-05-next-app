@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import ReviewStars from './ReviewStars';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
 
 type ProductCardProps = {
     product: Product;
@@ -28,7 +30,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
                     -{product.discountPercentage}%
                 </span>
             </div>
-            <div className="relative bg-neutral-50 h-[300px] flex justify-center items-center">
+            <div
+                className={cn(
+                    'relative bg-neutral-50 h-[300px] flex justify-center items-center',
+                    'group'
+                )}
+            >
+                <Button
+                    variant="outline"
+                    className="size-8 p-0 rounded-full absolute right-2 top-2 opacity-0 transition-all group-hover:opacity-100 group-hover:shadow-md"
+                >
+                    <Image src="/icons/heart.svg" alt="icon heart" width={18} height={18} />
+                </Button>
+                <Button className="absolute bottom-0 opacity-0 transition-all w-full group-hover:opacity-100">
+                    Add to Card
+                </Button>
                 <Image
                     className="w-full h-[200px] object-center object-contain"
                     src={product.images[0]}

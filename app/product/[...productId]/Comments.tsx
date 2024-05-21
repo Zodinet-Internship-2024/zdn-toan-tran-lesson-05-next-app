@@ -10,7 +10,7 @@ const Comments = ({ comments }: CommentProps) => {
     const numComments = comments.length;
     return (
         <section>
-            <div className="flex justify-between mb-10">
+            <div className="flex justify-between mb-10 items-center">
                 <h3 className="font-medium text-xl">{numComments} Review</h3>
                 <div className="w-[256px]">
                     <CommentFilterSelect />
