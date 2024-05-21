@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import ProductInformation from './ProductInformation';
 import CustomerReviews from './CustomerReviews';
+import { Metadata, ResolvingMetadata } from 'next';
+import productApi from '@/api/product-api';
 
 type ProductDetailPageProps = {
     params: {
@@ -20,4 +22,16 @@ const ProductDetailPage = ({ params: { productId } }: ProductDetailPageProps) =>
         </main>
     );
 };
+
+export async function generateMetadata(
+    { params }: ProductDetailPageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const id = params.productId;
+    const product = await productApi.getProductById(id);
+
+    return {
+        title: `${product.title} - Toan Shop`,
+    };
+}
 export default ProductDetailPage;

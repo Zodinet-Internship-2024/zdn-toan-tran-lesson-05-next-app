@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({ subsets: ['latin'], variable: '--font-poppins', weight: '400' });
 
 export const metadata: Metadata = {
-    title: 'Home - Zodinet Shop',
-    description: 'Trang chủ của zodinet shop',
+    title: 'Home - Toan Shop',
+    description: 'Trang chủ của Toan shop',
 };
 
 export default function RootLayout({
