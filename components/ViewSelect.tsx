@@ -18,7 +18,7 @@ const ViewSelect = () => {
     return (
         <div className="flex">
             <Button
-                className={cn(view === 'grid' && 'bg-neutral-100')}
+                className={cn(view === 'grid' && 'bg-neutral-100', 'rounded-none')}
                 variant="outline"
                 onClick={() => handleChangeView('grid')}
             >
@@ -30,7 +30,7 @@ const ViewSelect = () => {
                 />
             </Button>
             <Button
-                className={cn(view === 'column' && 'bg-neutral-100')}
+                className={cn(view === 'column' && 'bg-neutral-100', 'rounded-none')}
                 variant="outline"
                 onClick={() => handleChangeView('column')}
             >

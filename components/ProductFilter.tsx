@@ -20,7 +20,7 @@ const ProductFilter = () => {
                     <PriceSelect />
                 </div>
             </section>
-            <section className="flex self-end">
+            <section className="flex self-end gap-1">
                 <SortBySelect />
                 <ViewSelect />
             </section>
