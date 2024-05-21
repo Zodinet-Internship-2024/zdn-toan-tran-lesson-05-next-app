@@ -17,7 +17,11 @@ class ProductApi {
         return res.json();
     }
 
-    
+    async getProductById(id: string) {
+        const res = await fetch(`${this.host}/products/${id}`);
+
+        return res.json();
+    }
 }
 
 const HOST = process.env.API_HOST ?? 'https://dummyjson.com';

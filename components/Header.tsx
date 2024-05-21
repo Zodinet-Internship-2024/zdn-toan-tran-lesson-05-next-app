@@ -33,7 +33,9 @@ const Header = () => {
                 </Button>
             </section>
             <section className="max-w-[1140px] mx-auto flex justify-between py-4 items-center px-8">
-                <h2 className="font-medium text-2xl leading-6">Shop.</h2>
+                <Link href="/" className="font-medium text-2xl leading-6">
+                    Shop.
+                </Link>
                 <Navbar />
                 <div>
                     <Button variant="ghost">

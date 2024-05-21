@@ -18,3 +18,22 @@ interface Product {
     thumbnail: string;
     images: string[];
 }
+
+interface CommentResponse {
+    comments: Comment[];
+    total: number;
+    skip: number;
+    limit: number;
+}
+
+interface Comment {
+    id: number;
+    body: string;
+    postId: number;
+    user: User;
+}
+
+interface User {
+    id: number;
+    username: string;
+}
